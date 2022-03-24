@@ -4,5 +4,6 @@
 </script>
 
 <h1>Text Editor</h1>
+<h2>By Rayyane El-malhouni</h2>
 <Controller />
 <Result />
