@@ -1,16 +1,59 @@
+<style>
+   .range, .select-case {
+       display: flex;
+       width: 100%;
+       justify-content: space-around;
+       flex-wrap: wrap;
+       margin-top: 50px;
+   }
+   .select-case {
+       margin-top: 20px;
+       margin-bottom: 20px;
+   }
+   .c {
+       margin: 5px;
+       margin-bottom: 25px;
+   }
+   h3 {
+       font-size: 1em;
+   }
+   .textarea {
+       margin: 20px;
+       margin-top: 30px;
+       text-align: center;
+   }
+   .textarea h2 {
+       font-size: 1.2em;
+       margin-bottom: 15px;
+   }
+   .textarea textarea{
+       width: 100%;
+       max-width: 750px;
+       max-height: 400px;
+       padding: 10px;
+       border-radius: 15px;
+       background-color: #F9F9F9;
+       border: none;
+   }
+
+</style>
+
 <div class="controller">
-    <div class="size-container" >
-        <h3>Size: </h3>
-    <input  type="range" min=0 max=36 class="size-controll"/>
+    <div class="range">
+        <div class="size-container" >
+            <h3>Size: </h3>
+        <input  type="range" min=0 max=36 class="size-controll c"/>
+        </div>
+        <div class="width-container" >
+            <h3>Width: </h3>
+        <input  type="range" min=0 max=1000 class="width-controll c"/>
+        </div>
+        <div class="space-container" >
+            <h3>letter-spacing: </h3>
+        <input  type="range" min=0 max=26 class="space-controll c"/>
+        </div>
     </div>
-    <div class="size-container" >
-        <h3>Width: </h3>
-    <input  type="range" min=0 max=1000 class="size-controll"/>
-    </div>
-    <div class="size-container" >
-        <h3>letter-spacing: </h3>
-    <input  type="range" min=0 max=36 class="size-controll"/>
-    </div>
+    <div class="select-case">
         <div class="size-container" >
             <h3>Color: </h3>
             <select id="cars" name="cars">
@@ -28,6 +71,7 @@
                 <option value="fiat">Arial</option>
             </select>
          </div>
+        </div>
          
         
 
