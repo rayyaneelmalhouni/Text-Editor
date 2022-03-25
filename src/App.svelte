@@ -8,16 +8,20 @@
       width: 0,
       letterSpacing: 0,
       color: "",
-      font: ""
+      worldSpacing: 0,
+      textTransform: ""
    }
    
    function passText(e) {
+      
       info.text = e.detail.text;
       info.size = e.detail.s;
       info.width = e.detail.w;
       info.letterSpacing = e.detail.l;
       info.color = e.detail.c;
-      info.font = e.detail.f
+      info.worldSpacing = e.detail.ws;
+      info.textTransform = e.detail.tt;
+
    }
 </script>
 
@@ -38,6 +42,11 @@
        letter-spacing: .2em;
        margin-bottom: 40px;
     }
+    .copyright {
+       margin: 40px 0 20px 20px;
+       color: #A9A9A9;
+       font-size: .9em;
+    }
     @media only screen and (max-width: 600px) {
        .title {
           font-size: 1.5em;
@@ -51,6 +60,6 @@
 
 
 <h1 class="title">Text Editor</h1>
-<h2 class="sub-title">By Rayyane El-malhouni</h2>
 <Controller on:message={passText}/>
 <Result {...info}/>
+<p class="copyright"><span>&copy;</span> 2022 EL malhouni Rayyane</p>

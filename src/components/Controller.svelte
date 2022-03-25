@@ -1,25 +1,181 @@
 <script>
     import { createEventDispatcher } from "svelte";
     const dispatch = createEventDispatcher()
+    const cssColors = [
+  "AliceBlue",
+  "AntiqueWhite",
+  "Aqua",
+  "Aquamarine",
+  "Azure",
+  "Beige",
+  "Bisque",
+  "Black",
+  "BlanchedAlmond",
+  "Blue",
+  "BlueViolet",
+  "Brown",
+  "BurlyWood",
+  "CadetBlue",
+  "Chartreuse",
+  "Chocolate",
+  "Coral",
+  "CornflowerBlue",
+  "Cornsilk",
+  "Crimson",
+  "Cyan",
+  "DarkBlue",
+  "DarkCyan",
+  "DarkGoldenRod",
+  "DarkGray",
+  "DarkGrey",
+  "DarkGreen",
+  "DarkKhaki",
+  "DarkMagenta",
+  "DarkOliveGreen",
+  "DarkOrange",
+  "DarkOrchid",
+  "DarkRed",
+  "DarkSalmon",
+  "DarkSeaGreen",
+  "DarkSlateBlue",
+  "DarkSlateGray",
+  "DarkSlateGrey",
+  "DarkTurquoise",
+  "DarkViolet",
+  "DeepPink",
+  "DeepSkyBlue",
+  "DimGray",
+  "DimGrey",
+  "DodgerBlue",
+  "FireBrick",
+  "FloralWhite",
+  "ForestGreen",
+  "Fuchsia",
+  "Gainsboro",
+  "GhostWhite",
+  "Gold",
+  "GoldenRod",
+  "Gray",
+  "Grey",
+  "Green",
+  "GreenYellow",
+  "HoneyDew",
+  "HotPink",
+  "IndianRed",
+  "Indigo",
+  "Ivory",
+  "Khaki",
+  "Lavender",
+  "LavenderBlush",
+  "LawnGreen",
+  "LemonChiffon",
+  "LightBlue",
+  "LightCoral",
+  "LightCyan",
+  "LightGoldenRodYellow",
+  "LightGray",
+  "LightGrey",
+  "LightGreen",
+  "LightPink",
+  "LightSalmon",
+  "LightSeaGreen",
+  "LightSkyBlue",
+  "LightSlateGray",
+  "LightSlateGrey",
+  "LightSteelBlue",
+  "LightYellow",
+  "Lime",
+  "LimeGreen",
+  "Linen",
+  "Magenta",
+  "Maroon",
+  "MediumAquaMarine",
+  "MediumBlue",
+  "MediumOrchid",
+  "MediumPurple",
+  "MediumSeaGreen",
+  "MediumSlateBlue",
+  "MediumSpringGreen",
+  "MediumTurquoise",
+  "MediumVioletRed",
+  "MidnightBlue",
+  "MintCream",
+  "MistyRose",
+  "Moccasin",
+  "NavajoWhite",
+  "Navy",
+  "OldLace",
+  "Olive",
+  "OliveDrab",
+  "Orange",
+  "OrangeRed",
+  "Orchid",
+  "PaleGoldenRod",
+  "PaleGreen",
+  "PaleTurquoise",
+  "PaleVioletRed",
+  "PapayaWhip",
+  "PeachPuff",
+  "Peru",
+  "Pink",
+  "Plum",
+  "PowderBlue",
+  "Purple",
+  "RebeccaPurple",
+  "Red",
+  "RosyBrown",
+  "RoyalBlue",
+  "SaddleBrown",
+  "Salmon",
+  "SandyBrown",
+  "SeaGreen",
+  "SeaShell",
+  "Sienna",
+  "Silver",
+  "SkyBlue",
+  "SlateBlue",
+  "SlateGray",
+  "SlateGrey",
+  "Snow",
+  "SpringGreen",
+  "SteelBlue",
+  "Tan",
+  "Teal",
+  "Thistle",
+  "Tomato",
+  "Turquoise",
+  "Violet",
+  "Wheat",
+  "White",
+  "WhiteSmoke",
+  "Yellow",
+  "YellowGreen",
+];
     let texty = "";
     let size = 16;
     let width = 500;
     let letterSpacing = 2;
-    let color = "red";
-    let font = "arial";
+    let color = "Black";
+    let worldSpacing = 8;
+    let textTransform = "";
+    
+
     function sendText() {
          dispatch("message", {
              text: texty,
              s: size,
              w: width,
              l: letterSpacing,
-             c: color,
-             f: font
+             c: color.toLocaleLowerCase(),
+             ws: worldSpacing,
+             tt: textTransform
         })
     }
 </script>
 
 <style>
+    
+
    .range, .select-case {
        display: flex;
        width: 100%;
@@ -55,6 +211,14 @@
        background-color: #F9F9F9;
        border: none;
    }
+   .v select {
+    margin: 10px 0;
+    width: 120px;
+    padding: 5px;
+    border: none;
+    background-color: #F9F9F9;
+
+   }
    @media only screen and (max-width: 600px) {
        .range, .select-case {
            display: block;
@@ -84,25 +248,30 @@
             <h3>letter-spacing: </h3>
         <input  type="range" min=0 max=26 class="space-controll c" bind:value={letterSpacing} on:change={sendText}/>
         </div>
+        <div class="space-container" >
+            <h3>World spacing: </h3>
+        <input  type="range" min=0 max=46 class="space-controll c" bind:value={worldSpacing} on:change={sendText}/>
+        </div>
+        
     </div>
     <div class="select-case">
         <div class="size-container v" >
             <h3>Color: </h3>
             <select id="cars" name="cars" bind:value={color} on:change={sendText}>
-                <option value="red">Red</option>
-                <option value="blue">Blue</option>
-                <option value="green">Green</option>
-                <option value="yellow">Yellow</option>
+                {#each cssColors as color}
+                    <option value={color}>{color.toUpperCase()}</option>
+                {/each}
               </select>
             </div>
-        <div class="font-container v" >
-             <h3>Font: </h3>
-            <select id="cars" name="cars" bind:value={font} on:change={sendText}>
-                <option value="roboto">Roboto</option>
-                <option value="poppins">Poppins</option>
-                <option value="arial">Arial</option>
-            </select>
-         </div>
+            <div class="size-container v" >
+                <h3>Text transform: </h3>
+                <select id="transformText" name="transformText" bind:value={textTransform} on:change={sendText}>
+                        <option value="">Normal</option>
+                        <option value="capitalize">Capitalise</option>
+                        <option value="uppercase">UPPERCASE</option>
+                        <option value="lowercase">lowercase</option>
+                  </select>
+            </div>
         </div>
          
         
