@@ -3805,8 +3805,8 @@ var app = (function () {
     			t3 = space();
     			p = element("p");
     			p.innerHTML = `<span>©</span> 2022 EL malhouni Rayyane`;
-    			attr(h1, "class", "title svelte-1fp8m7i");
-    			attr(p, "class", "copyright svelte-1fp8m7i");
+    			attr(h1, "class", "title svelte-1cimg8u");
+    			attr(p, "class", "copyright svelte-1cimg8u");
     		},
     		m(target, anchor) {
     			insert(target, h1, anchor);
