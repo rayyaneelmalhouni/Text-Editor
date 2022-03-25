@@ -14,6 +14,7 @@
        text-align: center;
        font-size: .9em;
        letter-spacing: .2em;
+       margin-bottom: 40px;
     }
     @media only screen and (max-width: 600px) {
        .title {

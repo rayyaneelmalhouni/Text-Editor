@@ -18,7 +18,6 @@
        font-size: 1em;
    }
    .textarea {
-       margin: 20px;
        margin-top: 30px;
        text-align: center;
    }
@@ -27,13 +26,25 @@
        margin-bottom: 15px;
    }
    .textarea textarea{
-       width: 100%;
+       width: 80%;
        max-width: 750px;
        max-height: 400px;
        padding: 10px;
        border-radius: 15px;
        background-color: #F9F9F9;
        border: none;
+   }
+   @media only screen and (max-width: 600px) {
+       .range, .select-case {
+           display: block;
+           width: 300px;
+           margin: 0 auto;
+           text-align: center
+       }
+       .select-case .v {
+           margin-bottom: 20px;
+       }
+
    }
 
 </style>
@@ -54,7 +65,7 @@
         </div>
     </div>
     <div class="select-case">
-        <div class="size-container" >
+        <div class="size-container v" >
             <h3>Color: </h3>
             <select id="cars" name="cars">
                 <option value="volvo">Volvo</option>
@@ -63,8 +74,8 @@
                 <option value="audi">Audi</option>
               </select>
             </div>
-        <div class="font-container" >
-             <h3>Fonts: </h3>
+        <div class="font-container v" >
+             <h3>Font: </h3>
             <select id="cars" name="cars">
                 <option value="volvo">Roboto</option>
                 <option value="saab">Poppins</option>
