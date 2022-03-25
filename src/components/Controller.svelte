@@ -1,3 +1,24 @@
+<script>
+    import { createEventDispatcher } from "svelte";
+    const dispatch = createEventDispatcher()
+    let texty = "";
+    let size = 16;
+    let width = 500;
+    let letterSpacing = 2;
+    let color = "red";
+    let font = "arial";
+    function sendText() {
+         dispatch("message", {
+             text: texty,
+             s: size,
+             w: width,
+             l: letterSpacing,
+             c: color,
+             f: font
+        })
+    }
+</script>
+
 <style>
    .range, .select-case {
        display: flex;
@@ -53,33 +74,33 @@
     <div class="range">
         <div class="size-container" >
             <h3>Size: </h3>
-        <input  type="range" min=0 max=36 class="size-controll c"/>
+        <input  type="range" min=0 max=36 class="size-controll c" bind:value={size} on:change={sendText}/>
         </div>
         <div class="width-container" >
             <h3>Width: </h3>
-        <input  type="range" min=0 max=1000 class="width-controll c"/>
+        <input  type="range" min=0 max=1000 class="width-controll c" bind:value={width} on:change={sendText}/>
         </div>
         <div class="space-container" >
             <h3>letter-spacing: </h3>
-        <input  type="range" min=0 max=26 class="space-controll c"/>
+        <input  type="range" min=0 max=26 class="space-controll c" bind:value={letterSpacing} on:change={sendText}/>
         </div>
     </div>
     <div class="select-case">
         <div class="size-container v" >
             <h3>Color: </h3>
-            <select id="cars" name="cars">
-                <option value="volvo">Volvo</option>
-                <option value="saab">Saab</option>
-                <option value="fiat">Fiat</option>
-                <option value="audi">Audi</option>
+            <select id="cars" name="cars" bind:value={color} on:change={sendText}>
+                <option value="red">Red</option>
+                <option value="blue">Blue</option>
+                <option value="green">Green</option>
+                <option value="yellow">Yellow</option>
               </select>
             </div>
         <div class="font-container v" >
              <h3>Font: </h3>
-            <select id="cars" name="cars">
-                <option value="volvo">Roboto</option>
-                <option value="saab">Poppins</option>
-                <option value="fiat">Arial</option>
+            <select id="cars" name="cars" bind:value={font} on:change={sendText}>
+                <option value="roboto">Roboto</option>
+                <option value="poppins">Poppins</option>
+                <option value="arial">Arial</option>
             </select>
          </div>
         </div>
@@ -89,5 +110,5 @@
 </div>
 <div class="textarea">
     <h2>Write text here: </h2>
-    <textarea name="" id="" cols="30" rows="10"></textarea>
+    <textarea name="" id="" cols="30" rows="10" bind:value={texty} on:keyup={sendText}></textarea>
 </div>

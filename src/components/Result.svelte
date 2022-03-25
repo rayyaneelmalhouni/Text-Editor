@@ -1,14 +1,19 @@
+<script>
+    import { marked } from "marked"
+  export let text;
+  export let size;
+  export let width;
+  export let color;
+  export let letterSpacing;
+  export let font;
+</script>
+
 <style>
         h1 {
             text-align: center;
             font-size: 1.2em;
             margin-top: 20px;
             margin-bottom: 10px;
-        }
-        .result {
-            margin: 20px;
-            text-align: left;
-            font-size: 1.2em;
         }
         .result-container {
             width: 80%;
@@ -20,12 +25,19 @@
             }
             .result {
                 font-size: .9em;
-                text-align: center;
             }
         }
 </style>
 
+
 <h1>Result: </h1>
 <div class="result-container">
-<p class="result">Rayyane is a guy beautiful guy</p>
+<p class="result" style="color: {color}; width: {width}; letterSpacing: {letterSpacing}; font-size: {size}px">{@html marked(text)}</p>
+<p>{size}</p>
+<p>{width}</p>
+<p>{color}</p>
+<p>{letterSpacing}</p>
+<p>{font}</p>
+
+
 </div>

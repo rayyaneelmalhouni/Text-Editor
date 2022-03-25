@@ -1,8 +1,30 @@
 <script>
    import Controller from "./components/Controller.svelte";
 	import Result from "./components/Result.svelte";
+
+   let info = {
+      text: "",
+      size: 0,
+      width: 0,
+      letterSpacing: 0,
+      color: "",
+      font: ""
+   }
+   
+   function passText(e) {
+      info.text = e.detail.text;
+      info.size = e.detail.s;
+      info.width = e.detail.w;
+      info.letterSpacing = e.detail.l;
+      info.color = e.detail.c;
+      info.font = e.detail.f
+   }
 </script>
+
+
 <style>
+
+
     .title {
        color: blue;
        text-align: center;
@@ -26,7 +48,9 @@
        }
     }
 </style>
+
+
 <h1 class="title">Text Editor</h1>
 <h2 class="sub-title">By Rayyane El-malhouni</h2>
-<Controller />
-<Result />
+<Controller on:message={passText}/>
+<Result {...info}/>
